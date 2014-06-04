@@ -10,7 +10,7 @@
           url: '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js',
           type: 'js',
           success: function(){
-            return console.log("HEAHHHHH, jquery OK!");
+            return console.log("jquery OK!");
           },
           fail: function(){},
           test: function(){
@@ -18,10 +18,10 @@
           }
         }, {
           name: 'bootstrap',
-          url: '/res/bootstrap.min.js',
+          url: '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',
           type: 'js',
           success: function(){
-            return console.log("bootstrap seems OK!");
+            return console.log("bootstrap OK!");
           }
         }
       ],
@@ -29,12 +29,12 @@
         url: '/res/bootstrap.min.css',
         type: 'css',
         success: function(){
-          return console.log("HEAHHHHH, bootstrapCSS OK!");
+          return console.log("bootstrapCSS OK!");
         }
       }]
     });
     whenCompleteAllReq == null && (whenCompleteAllReq = function(){});
-    info == null && (info = true);
+    info == null && (info = false);
     dontFireAtOnce == null && (dontFireAtOnce = false);
     instance = {
       reqs: reqs

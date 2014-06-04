@@ -6,21 +6,19 @@ window.Req = (
             [
                 {
                     name:'jQuery',
-                    # url:'/res/jquery.js',
                     url:'//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js',
                     type:'js',
-                    success: -> console.log "HEAHHHHH, jquery OK!",
+                    success: -> console.log "jquery OK!",
                     fail: -> ,
                     test: -> (((typeof $) === 'function') && ((typeof $.fn.jquery) === 'string'))
                 },
                 {
                     name:'bootstrap',
-                    url:'/res/bootstrap.min.js',
-                    # url:'//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',
+                    url:'//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',
                     type:'js',
-                    success: -> console.log "bootstrap seems OK!",
+                    success: -> console.log "bootstrap OK!",
                     # fail: -> ,
-                    # test: -> true
+                    # test: -> 
                 },
             ]
         \bootstrapCSS :
@@ -29,14 +27,14 @@ window.Req = (
                     # name:'bootstrap',
                     url:'/res/bootstrap.min.css',
                     type:'css',
-                    success: ->  console.log("HEAHHHHH, bootstrapCSS OK!"),
+                    success: ->  console.log("bootstrapCSS OK!"),
                     # fail: -> ,
                     # test: -> 
                 }
             ]
     ),
     whenCompleteAllReq = ->,
-    info = on,
+    info = off,
     dontFireAtOnce = false,
     ) ->
 
