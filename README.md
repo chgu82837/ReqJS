@@ -48,29 +48,36 @@ Usage
           // to check if this page already have the library you need, preventing to overwrite and load them again.
           // return true if passed tests then this request wont be sent (but success still will be called).
           test: function(){
-            return deepEq$(typeof $, 'function', '===') && deepEq$(typeof $.fn.jquery, 'string', '===');
+            return (((typeof $) === 'function') && ((typeof $.fn.jquery) === 'string'));
           }
         },
         
-        // another js that its callback wont be called until the previous req in the same array is finished. This is bootstrap 
+        // another js that its callback wont be called until the previous req in the same array is finished. This is bootstrap requiring jquery.
         { 
-          requiring jquery.
           name: 'bootstrap',
           url: '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',
           type: 'js',
           success: function(){
             return console.log("bootstrap OK!");
           }
+          // fail: function(){},
+          
+          // dont even create this key if you dont want to test
+          // test: function(){},
         }
       ],
 
       // another queue which dont require jquery,this one is directly loaded
       'bootstrapCSS': [{
+        //  name: optional
+        // name : ""
         url: '/res/bootstrap.min.css',
         type: 'css',
         success: function(){
           return console.log("bootstrapCSS OK!");
         }
+        // fail callback: optional
+        // fail: function(){},
       }]
     },
     
@@ -81,7 +88,7 @@ Usage
     info,
 
     // 4th parameter: boolean, true then you need to call [req instance].start() to start manually.
-    dontFireAtOnce // boolean, true then you need to call [req instance].start() to start manually.
+    dontFireAtOnce
     );
   ```
   
