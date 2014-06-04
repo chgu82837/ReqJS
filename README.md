@@ -24,21 +24,37 @@ Usage
  3. The Req function has at most 4 parameters as shown below (also default setting which does the same thing as `Req();`):
   ```
   Req(
-    // first parameter: reqs => an object containing some queues, key is their name
+    // 1st parameter: reqs => an object containing some queues, key is their name
     {
-      'jsPoweredByJQuery': [ // one queue is an array containing some req objects
-        { // one req object at least should have url property which is the most important for XHR
+      // one queue is an array containing some req objects
+      'jsPoweredByJQuery': [
+        
+        // one req object at least should have url property which is the most important for XHR
+        { 
           name: 'jQuery',
           url: '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js',
-          type: 'js', // type is also important, Req will process the result by the type value, more info is shown below
-          success: function(){ // when success and queue to this req, this callback will be called.
+          
+          // type is also important, Req will process the result by the type value, more info is shown below
+          type: 'js',
+          
+          // when success and queue to this req, this callback will be called.
+          success: function(){ 
             return console.log("jquery OK!");
           },
-          fail: function(){}, // when failed and queue to this req, this callback will be called.
-          test: function(){ // to check if this page already have the library you need, preventing to overwrite and load them again. return true if passed tests,optional.
+
+          // when failed and queue to this req, this callback will be called.
+          fail: function(){},
+          
+          // to check if this page already have the library you need, preventing to overwrite and load them again.
+          // return true if passed tests then this request wont be sent (but success still will be called).
+          test: function(){
             return deepEq$(typeof $, 'function', '===') && deepEq$(typeof $.fn.jquery, 'string', '===');
           }
-        }, { // another js that its callback wont be called until the previous req in the same array is finished. This is bootstrap requiring jquery.
+        },
+        
+        // another js that its callback wont be called until the previous req in the same array is finished. This is bootstrap 
+        { 
+          requiring jquery.
           name: 'bootstrap',
           url: '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',
           type: 'js',
@@ -47,16 +63,24 @@ Usage
           }
         }
       ],
-      'bootstrapCSS': [{ // another queue which dont require jquery,this one is directly loaded
+
+      // another queue which dont require jquery,this one is directly loaded
+      'bootstrapCSS': [{
         url: '/res/bootstrap.min.css',
-        type: 'css', // css type
+        type: 'css',
         success: function(){
           return console.log("bootstrapCSS OK!");
         }
       }]
     },
-    whenCompleteAllReq, // a callback when all queue is completed.
-    info, // boolean, true then display all the debug message
+    
+    // 2nd parameter: a callback when all queue is completed.
+    whenCompleteAllReq,
+    
+    // 3rd parameter: boolean, true then display all the debug message
+    info,
+
+    // 4th parameter: boolean, true then you need to call [req instance].start() to start manually.
     dontFireAtOnce // boolean, true then you need to call [req instance].start() to start manually.
     );
   ```
