@@ -1,4 +1,4 @@
-Req
+ReqJS
 ===
 
 require + request = Req => do many Request to Require XMLHTTP Resource and executes callbacks in queue as you desired
