@@ -26,7 +26,7 @@
         }
       ],
       'bootstrapCSS': [{
-        url: '/res/bootstrap.min.css',
+        url: '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css',
         type: 'css',
         success: function(){
           return console.log("bootstrapCSS OK!");
